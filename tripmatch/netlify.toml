@@ -1,0 +1,3 @@
+[build]
+  publish = "tripmatch"
+  command = ""
