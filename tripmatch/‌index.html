@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tripmatch · Eventi & Viaggi curati a Torino</title>
+  <meta name="description" content="Tripmatch organizza eventi e viaggi su misura a Torino. Esperienze curate, look premium e prenotazioni semplici." />
+
+  <!-- Fonts (gratuite) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --savoy:#0D3B66;      /* blu elegante */
+      --gold:#C6A15B;       /* oro spento */
+      --ivory:#F7F3ED;      /* avorio */
+      --ink:#111317;        /* quasi nero */
+      --muted:#6B7280;      /* grigio testo */
+      --nav-h:72px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth; scroll-padding-top:var(--nav-h);}
+    body{margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, sans-serif; color:var(--ink); background:var(--ivory);}
+    img{max-width:100%; display:block}
+    a{color:inherit; text-decoration:none}
+    /* Container */
+    .wrap{max-width:1200px; margin:0 auto; padding:0 20px}
+
+    /* NAV */
+    .nav{position:sticky; top:0; z-index:1000; height:var(--nav-h); display:flex; align-items:center; backdrop-filter: blur(8px); background:rgba(247,243,237,0.75); border-bottom:1px solid rgba(0,0,0,.06)}
+    .nav .brand{display:flex; gap:10px; align-items:center; font-weight:800; letter-spacing:.3px}
+    .badge{font-family:"Playfair Display", serif; color:var(--savoy); font-weight:700}
+    .nav a.btn{padding:10px 16px; border-radius:999px; background:var(--savoy); color:white; font-weight:600}
+    .menu{margin-left:auto; display:flex; gap:18px; align-items:center}
+    .menu a{padding:10px 8px; color:#1f2937; font-weight:600}
+    .hamb{display:none}
+
+    /* HERO */
+    .hero{position:relative; min-height:72vh; display:grid; place-items:center; background:linear-gradient(180deg, rgba(13,59,102,.75), rgba(13,59,102,.5)), url('images/torino-hero.jpg') center/cover no-repeat; color:white}
+    .hero .inner{padding:80px 0}
+    .eyebrow{letter-spacing:.18em; text-transform:uppercase; font-weight:700; opacity:.85}
+    h1{font-family:"Playfair Display", serif; font-size: clamp(36px, 5vw, 56px); line-height:1.05; margin:12px 0 16px}
+    .lead{font-size: clamp(16px, 2.2vw, 20px); max-width:820px; opacity:.95}
+    .cta{margin-top:28px; display:flex; gap:12px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px; font-weight:700; border:1px solid transparent}
+    .btn.primary{background:var(--gold); color:#1c1917}
+    .btn.ghost{border-color:rgba(255,255,255,.5); color:white; background:transparent}
+
+    /* SECTIONS */
+    section{padding:84px 0}
+    .section-title{font-family:"Playfair Display", serif; font-size: clamp(28px, 3.2vw, 40px); margin:0 0 8px; color:var(--savoy)}
+    .section-sub{color:#374151; margin:0 0 28px}
+
+    /* GRID CARDS */
+    .grid{display:grid; gap:22px}
+    @media(min-width:720px){ .grid.cols-3{grid-template-columns:repeat(3,1fr)} }
+    @media(min-width:720px){ .grid.cols-2{grid-template-columns:repeat(2,1fr)} }
+
+    .card{background:white; border:1px solid rgba(0,0,0,.06); border-radius:16px; overflow:hidden; box-shadow:0 8px 24px rgba(0,0,0,.05)}
+    .card .pad{padding:18px}
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:#F1F5F9; color:#0f172a; font-weight:700; font-size:12px}
+    .meta{color:var(--muted); font-size:14px}
+    .price{font-weight:800; font-size:18px}
+
+    /* TORINO FEATURES */
+    .features{display:grid; gap:18px}
+    @media(min-width:900px){ .features{grid-template-columns:repeat(3,1fr)} }
+    .feature{background:white; border:1px solid rgba(0,0,0,.06); border-radius:16px; padding:22px; box-shadow:0 8px 24px rgba(0,0,0,.05)}
+    .feature h3{margin:10px 0 8px}
+
+    /* TEAM */
+    .team{display:grid; gap:18px}
+    @media(min-width:900px){ .team{grid-template-columns:repeat(3,1fr)} }
+    .person{background:white; border:1px solid rgba(0,0,0,.06); border-radius:16px; padding:18px; text-align:center}
+    .avatar{width:110px; height:110px; border-radius:999px; object-fit:cover; margin:6px auto 10px; border:3px solid var(--ivory); box-shadow:0 6px 18px rgba(0,0,0,.08)}
+
+    /* CONTACT */
+    form{display:grid; gap:12px}
+    input, textarea{width:100%; padding:12px 14px; border:1px solid #e5e7eb; border-radius:12px; background:#fff}
+    input:focus, textarea:focus{outline:2px solid var(--savoy); outline-offset:2px}
+    .form-row{display:grid; gap:12px}
+    @media(min-width:720px){ .form-row{grid-template-columns:1fr 1fr} }
+
+    /* FOOTER */
+    footer{background:#0B2C52; color:#E7ECF3; padding:30px 0}
+    .footgrid{display:grid; gap:20px}
+    @media(min-width:900px){ .footgrid{grid-template-columns:2fr 1fr 1fr} }
+    .copy{border-top:1px solid rgba(255,255,255,.18); margin-top:14px; padding-top:14px; font-size:14px; color:#cdd6e4}
+
+    /* Reveal on scroll */
+    .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
+    .reveal.in{opacity:1; transform:none}
+
+    /* Mobile */
+    @media(max-width:880px){
+      .menu{display:none}
+      .hamb{display:flex; margin-left:auto}
+      .mobile{position:fixed; inset:72px 0 0 0; background:rgba(247,243,237,.98); backdrop-filter:blur(8px); display:none; flex-direction:column; gap:12px; padding:16px}
+      .mobile a{padding:12px 4px; font-weight:700; font-size:18px}
+      .mobile.show{display:flex}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="wrap" style="display:flex; align-items:center; gap:16px; width:100%">
+      <a href="#home" class="brand" aria-label="Tripmatch home">
+        <!-- minimal logo SVG -->
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="var(--savoy)" stroke-width="2"/><path d="M6 14c2.5-3.5 5.5-3.5 12 0" stroke="var(--gold)" stroke-width="2"/></svg>
+        <span class="badge">Tripmatch</span>
+      </a>
+      <div class="menu" role="navigation" aria-label="Main">
+        <a href="#eventi">Eventi</a>
+        <a href="#viaggi">Viaggi</a>
+        <a href="#torino">Torino</a>
+        <a href="#chi-siamo">Chi siamo</a>
+        <a href="#contatti" class="btn">Contatti</a>
+      </div>
+      <button class="hamb btn ghost" aria-label="Apri menu" id="hamb">☰</button>
+    </div>
+  </nav>
+  <div class="mobile" id="mobile">
+    <a href="#eventi" onclick="closeMobile()">Eventi</a>
+    <a href="#viaggi" onclick="closeMobile()">Viaggi</a>
+    <a href="#torino" onclick="closeMobile()">Torino</a>
+    <a href="#chi-siamo" onclick="closeMobile()">Chi siamo</a>
+    <a href="#contatti" onclick="closeMobile()">Contatti</a>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="home" role="banner">
+    <div class="wrap inner">
+      <div class="eyebrow">Eventi & Viaggi · Torino</div>
+      <h1>Esperienze curate, dal primo briefing al rientro.</h1>
+      <p class="lead">Progettiamo e realizziamo eventi aziendali e privati, e viaggi di gruppo in partenza da Torino. Niente fronzoli: qualità, puntualità, trasparenza.</p>
+      <div class="cta">
+        <a class="btn primary" href="#eventi">Scopri eventi</a>
+        <a class="btn ghost" href="#viaggi">Prenota un viaggio</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- EVENTI -->
+  <section id="eventi" class="reveal">
+    <div class="wrap">
+      <h2 class="section-title">Eventi su misura</h2>
+      <p class="section-sub">Corporate, privati, studenti: curiamo logistica, venue, catering, intrattenimento e assistenza on‑site.</p>
+      <div class="grid cols-3">
+        <article class="card">
+          <img src="images/evento-corporate.jpg" alt="Evento aziendale a Torino" />
+          <div class="pad">
+            <div class="pill">Corporate</div>
+            <h3>Kickoff & Convention</h3>
+            <p class="meta">Venue premium, AV, regia, ospitalità</p>
+            <div class="price">da € 1.990</div>
+            <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn" style="background:var(--savoy); color:#fff" href="mailto:info@tripmatch.org?subject=Richiesta preventivo Corporate">Chiedi preventivo</a>
+              <a class="btn ghost" href="#contatti">Parla con noi</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <img src="images/evento-privato.jpg" alt="Evento privato" />
+          <div class="pad">
+            <div class="pill">Privati</div>
+            <h3>Private & Cerimonie</h3>
+            <p class="meta">Location storiche, catering, musica live</p>
+            <div class="price">da € 1.290</div>
+            <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn" style="background:var(--savoy); color:#fff" href="mailto:info@tripmatch.org?subject=Richiesta preventivo Privati">Chiedi preventivo</a>
+              <a class="btn ghost" href="#contatti">Parla con noi</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <img src="images/evento-studenti.jpg" alt="Evento per studenti a Torino" />
+          <div class="pad">
+            <div class="pill">Student‑friendly</div>
+            <h3>Welcome & Graduation</h3>
+            <p class="meta">Budget smart, zero compromessi su sicurezza</p>
+            <div class="price">da € 690</div>
+            <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn" style="background:var(--savoy); color:#fff" href="mailto:info@tripmatch.org?subject=Richiesta preventivo Student">Chiedi preventivo</a>
+              <a class="btn ghost" href="#contatti">Parla con noi</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIAGGI -->
+  <section id="viaggi" class="reveal">
+    <div class="wrap">
+      <h2 class="section-title">Viaggi in partenza da Torino</h2>
+      <p class="section-sub">Piccoli gruppi, date certe, accompagnatore. Prenotazione semplice.</p>
+      <div class="grid cols-3">
+        <article class="card">
+          <img src="images/viaggio-lago.jpg" alt="Weekend sul lago" />
+          <div class="pad">
+            <div class="pill">Weekend</div>
+            <h3>Laghi & Sapori</h3>
+            <p class="meta">12‑13 ottobre · 2 giorni · 12 posti</p>
+            <div class="price">€ 229 a persona</div>
+            <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn primary" href="https://buy.stripe.com/test_REPLACE_ME" target="_blank" rel="noopener">Prenota</a>
+              <a class="btn ghost" href="#contatti">Domande?</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <img src="images/viaggio-montagna.jpg" alt="Trekking in montagna" />
+          <div class="pad">
+            <div class="pill">Outdoor</div>
+            <h3>Trekking Alpi Cozie</h3>
+            <p class="meta">25‑27 ottobre · 3 giorni · 10 posti</p>
+            <div class="price">€ 289 a persona</div>
+            <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn primary" href="https://buy.stripe.com/test_REPLACE_ME" target="_blank" rel="noopener">Prenota</a>
+              <a class="btn ghost" href="#contatti">Domande?</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <img src="images/viaggio-cittadino.jpg" alt="City break" />
+          <div class="pad">
+            <div class="pill">City break</div>
+            <h3>Arte & Caffè storici</h3>
+            <p class="meta">16‑17 novembre · 2 giorni · 16 posti</p>
+            <div class="price">€ 199 a persona</div>
+            <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap">
+              <a class="btn primary" href="https://buy.stripe.com/test_REPLACE_ME" target="_blank" rel="noopener">Prenota</a>
+              <a class="btn ghost" href="#contatti">Domande?</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TORINO -->
+  <section id="torino" class="reveal" style="background:linear-gradient(180deg, rgba(198,161,91,.08), transparent)">
+    <div class="wrap">
+      <h2 class="section-title">Torino, il nostro terreno di gioco</h2>
+      <p class="section-sub">Riferimenti autentici, zero immagini “finte”. Scegliamo venue e percorsi che raccontano davvero la città.</p>
+      <div class="features">
+        <div class="feature">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5Z" stroke="var(--savoy)" stroke-width="2"/><path d="M8 13l4 2 4-2" stroke="var(--gold)" stroke-width="2"/></svg>
+          <h3>Mole & skyline</h3>
+          <p class="meta">Scatti reali dai belvedere, golden hour, storytelling curato.</p>
+        </div>
+        <div class="feature">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="var(--savoy)" stroke-width="2"/><path d="M7 12h10" stroke="var(--gold)" stroke-width="2"/></svg>
+          <h3>Caffè storici</h3>
+          <p class="meta">Degustazioni e micro‑eventi tra boiserie, porcellane e rituali.</p>
+        </div>
+        <div class="feature">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h18M12 3v18" stroke="var(--savoy)" stroke-width="2"/><rect x="6" y="6" width="12" height="12" stroke="var(--gold)" stroke-width="2"/></svg>
+          <h3>Alpi & outdoor</h3>
+          <p class="meta">Dalle colline ai rifugi: trasferte e logistica su misura.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHI SIAMO -->
+  <section id="chi-siamo" class="reveal">
+    <div class="wrap">
+      <h2 class="section-title">Chi siamo</h2>
+      <p class="section-sub">Un team snello con una rete di fornitori selezionati. Puntiamo su affidabilità e cura del dettaglio.</p>
+      <div class="team">
+        <div class="person">
+          <img class="avatar" src="images/team-1.jpg" alt="Founder Tripmatch" />
+          <h3>Nome Cognome</h3>
+          <p class="meta">Founder · Event director</p>
+        </div>
+        <div class="person">
+          <img class="avatar" src="images/team-2.jpg" alt="Travel lead Tripmatch" />
+          <h3>Nome Cognome</h3>
+          <p class="meta">Travel lead</p>
+        </div>
+        <div class="person">
+          <img class="avatar" src="images/team-3.jpg" alt="Partnerships Tripmatch" />
+          <h3>Nome Cognome</h3>
+          <p class="meta">Partnerships</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section id="contatti" class="reveal">
+    <div class="wrap">
+      <h2 class="section-title">Contatti</h2>
+      <p class="section-sub">Scrivici: rispondiamo velocemente e senza giri di parole.</p>
+      <div class="grid cols-2">
+        <div>
+          <form action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
+            <div class="form-row">
+              <input required type="text" name="nome" placeholder="Nome e cognome" aria-label="Nome e cognome" />
+              <input required type="email" name="email" placeholder="Email" aria-label="Email" />
+            </div>
+            <input type="text" name="oggetto" placeholder="Oggetto (es. preventivo evento)" aria-label="Oggetto" />
+            <textarea required name="messaggio" rows="5" placeholder="Raccontaci cosa ti serve…" aria-label="Messaggio"></textarea>
+            <button class="btn" style="background:var(--savoy); color:#fff" type="submit">Invia</button>
+          </form>
+          <p class="meta" style="margin-top:10px">Compilando il form accetti la nostra <a href="#" style="text-decoration:underline">Privacy</a>.</p>
+        </div>
+        <div>
+          <div class="card" style="padding:16px">
+            <p><strong>Email</strong><br><a href="mailto:info@tripmatch.org">info@tripmatch.org</a></p>
+            <p><strong>WhatsApp</strong><br><a href="https://wa.me/393000000000" target="_blank" rel="noopener">+39 300 000 0000</a></p>
+            <p><strong>Base</strong><br>Torino, Italia</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap footgrid">
+      <div>
+        <div class="brand" style="gap:8px; align-items:center; display:flex">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="#C6A15B" stroke-width="2"/></svg>
+          <strong>Tripmatch</strong>
+        </div>
+        <p class="meta" style="max-width:520px">Eventi & Viaggi curati a Torino. Niente immagini finte: solo esperienze vere.</p>
+        <div class="copy">© <span id="year"></span> Tripmatch · P.IVA/CF — Tutti i diritti riservati</div>
+      </div>
+      <div>
+        <strong>Link utili</strong>
+        <ul style="list-style:none; padding:0; margin:10px 0; line-height:1.9">
+          <li><a href="#eventi">Eventi</a></li>
+          <li><a href="#viaggi">Viaggi</a></li>
+          <li><a href="#contatti">Contatti</a></li>
+          <li><a href="#" rel="nofollow">Privacy & Cookie</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Social</strong>
+        <ul style="list-style:none; padding:0; margin:10px 0; line-height:1.9">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JSON-LD (SEO base) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Tripmatch",
+    "url":"https://tripmatch.org",
+    "sameAs":[],
+    "logo":"https://tripmatch.org/icon.png"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TravelAgency",
+    "name":"Tripmatch",
+    "areaServed":"Torino, IT",
+    "address":{"@type":"PostalAddress","addressLocality":"Torino","addressCountry":"IT"},
+    "url":"https://tripmatch.org"
+  }
+  </script>
+
+  <!-- JS minimal: mobile menu + reveal -->
+  <script>
+    const yearEl = document.getElementById('year');
+    if(yearEl) yearEl.textContent = new Date().getFullYear();
+
+    const hamb = document.getElementById('hamb');
+    const mobile = document.getElementById('mobile');
+    if(hamb){ hamb.addEventListener('click', ()=> mobile.classList.toggle('show')); }
+    function closeMobile(){ mobile.classList.remove('show'); }
+
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+  </script>
+
+  <!-- NOTE DI IMPLEMENTAZIONE (da rimuovere quando andate live)
+  1) Sostituite le immagini in /images/ con foto REALI (Mole, Piazza S. Carlo, Murazzi…).
+  2) Stripe Checkout: create un link di pagamento da dashboard Stripe e sostituitelo dove c'è https://buy.stripe.com/test_REPLACE_ME.
+  3) Form contatti: create un endpoint Formspree e sostituite l'ID in action.
+  4) SEO: aggiornate meta description, JSON-LD e favicon/icon.
+  5) Hosting: caricate index.html nella cartella public_html del vostro hosting.
+  6) HTTPS: attivate Let’s Encrypt dal pannello e impostate redirect 301 (vedi snippet .htaccess nel documento di consegna).
+  -->
+</body>
+</html>
